@@ -5,6 +5,11 @@
         <div> {{ title }} </div>
         <h1 v-if="IsTrue"> True </h1>
         <h1 v-else> False </h1>
+        <ul id="example-1">
+            <li v-for="item in items" v-bind:key="item">
+                {{ item.mensaje }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -19,7 +24,11 @@ export default {
     data() {
         return {
             title: "Home",
-            IsTrue: false
+            IsTrue: false,
+            items: [
+                { mensaje: 'Foo' },
+                { mensaje: 'Bar' }
+            ]
         }
     }
 }
