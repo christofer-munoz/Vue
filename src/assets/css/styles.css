@@ -97,3 +97,14 @@ span.psw {
      width: 100%;
   }
 }
+.products-table {
+  width: 600px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid black;
+}
+.addProduct-btn {
+  max-width: 120px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
