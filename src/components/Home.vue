@@ -9,8 +9,12 @@
             <h1 v-if="loading">Cargando productos...</h1>
             <div v-else>
                 <h1>Productos</h1>
-
-                <button class="addProduct-btn" @click="addProduct('vueJS')">Agregar</button>
+                <div class="newProduct">
+                    Nombre:<input v-model="name" type="text">
+                    Precio:<input v-model="price" type="text">
+                    <button class="addProduct-btn" @click="addProduct( name, price )">Agregar</button>
+                    <button class="addProduct-btn" @click="updateProduct( name, price )">Update</button>
+                </div>
 
                 <table class="products-table" v-for="product in products" :key="product.id">
                     <tr>
@@ -58,13 +62,25 @@ export default {
             axios.delete('http://127.0.0.1:8000/api/products/' + id)
             .then(() => {this.products = this.products.filter(product => product.id !== id);});
         },
-        addProduct(nameProduct) {
+        addProduct(nameProduct, priceProduct) {
             const newProduct = {
                 name: nameProduct,
-                price: 500
+                price: priceProduct
             };
             axios.post('http://127.0.0.1:8000/api/products/', newProduct)
-            .then(response => {this.products.push(response.data.data)})
+            .then(response => {this.products.push(response.data.data);
+            alert("Producto Añadido")})
+        },
+        // eslint-disable-next-line no-unused-vars
+        updateProduct(nameProduct, priceProduct) {
+            const newProduct = {
+                id: 1,
+                name: "nameProduct",
+                price: 12314
+            };
+            axios.put('http://127.0.0.1:8000/products/' + newProduct.id, newProduct)
+            .then(response => {this.products.push(response.data.data);
+            alert("Producto Actualizado")})
         }
     },
     mounted() {

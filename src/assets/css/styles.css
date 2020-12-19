@@ -108,3 +108,13 @@ span.psw {
   border-radius: 15px;
   margin-bottom: 30px;
 }
+.newProduct {
+  max-width: 20%;
+  max-height: 205px;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: cadetblue;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
